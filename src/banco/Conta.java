@@ -4,8 +4,6 @@ public class Conta {
 	private int conta;
 	private double saldo;
 	
-	public Conta() {
-	}
 	
 	public static void main(String [] args) {
 		
