@@ -5,27 +5,39 @@ public class Conta {
 	private double saldo;
 	
 	
-	public static void main(String [] args) {
-		
+	public Conta(int id_conta, double dep_saldo) {
+		this.conta = id_conta;
+		this.saldo = dep_saldo;
 	}
 	
-	public void transferir (int contaDest, double valor) throws OperacaoIllegalException{
-		
+	public void transferir (Conta contaOrig, Conta contaDest, double valor) throws OperacaoIllegalException{
+		if (contaOrig.getSaldo() >= valor) {
+			contaDest.creditarValor(valor);
+			contaOrig.debitarValor(valor);
+		}else {
+			throw new OperacaoIllegalException();
+		}
 	}
-
+	
+	public void creditarValor(double valor) throws OperacaoIllegalException{
+		if (valor > 0) {
+			this.saldo += valor;
+		}else {
+			throw new OperacaoIllegalException();
+		}
+	}
+	
+	public void debitarValor(double Valor) throws OperacaoIllegalException{
+		this.saldo -= Valor;
+	}
 	public int getConta() {
 		return conta;
 	}
 
-	public void setConta(int conta) {
-		this.conta = conta;
-	}
 
 	public double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
+	
 }
