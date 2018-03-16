@@ -15,7 +15,7 @@ public class Conta {
 			contaDest.creditarValor(valor);
 			contaOrig.debitarValor(valor);
 		}else {
-			throw new OperacaoIllegalException();
+			throw new OperacaoIllegalException("Saldo insuficiente");
 		}
 	}
 	
@@ -23,7 +23,7 @@ public class Conta {
 		if (valor > 0) {
 			this.saldo += valor;
 		}else {
-			throw new OperacaoIllegalException();
+			throw new OperacaoIllegalException("Erro ao creditar valor");
 		}
 	}
 	
